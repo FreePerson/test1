@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApplication1.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="375" Width="496">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="bkey">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Label Content="{TemplateBinding ContentControl.Content}" Background="Red"></Label>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="true">
+                                <Setter Property="ContentControl.Content" Value="我被鼠标过了"></Setter>
+                            </Trigger>
+                            <Trigger Property="Button.IsMouseOver" Value="false">
+                                <Setter Property="ContentControl.Content" Value="我没被鼠标过了"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas x:Name="rootCanvas" Background="AliceBlue">
+        <Button x:Name="btn" Canvas.Left="122" Canvas.Top="32"  Height="133"  Width="244" Click="btn_Click"  Style="{StaticResource ResourceKey=bkey}" >
+        </Button>
+    </Canvas>
+</Window>

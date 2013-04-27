@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApplication1.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window3" Height="300" Width="300">
+    <Window.Resources>
+        <ControlTemplate TargetType="{x:Type ToggleButton}" x:Key="IsPressed">
+           <Image Source="image/共享开启.png"  MouseLeftButtonDown="Image_MouseUp" TouchUp="Image_TouchUp"></Image>
+        </ControlTemplate>
+        <ControlTemplate TargetType="{x:Type ToggleButton}" x:Key="UnPressed">
+            <Image Source="image/共享关闭.png"></Image>
+        </ControlTemplate>
+    </Window.Resources>
+    <Canvas>
+        <ToggleButton Width="100" Height="100" >
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Template" Value="{StaticResource ResourceKey=IsPressed}"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter Property="Template" Value="{StaticResource ResourceKey=UnPressed}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+    </Canvas>
+</Window>
